@@ -67,23 +67,50 @@ void mousePressed(){
 }
 
 void checkSet(ArrayList<Card> selection){
-  boolean sn;
-  boolean sc;
-  boolean ss;
+  boolean sn = false;
+  boolean sc = false;
+  boolean ss = false;
    if(selection.get(0).number == selection.get(1).number && selection.get(0).number == selection.get(2).number){
-     println("Same Number!");
+    // println("Same Number!");
      sn = true;
    }
    if(selection.get(0).col == selection.get(1).col && selection.get(0).col == selection.get(2).col){
-     println("Same Color!");
+     //println("Same Color!");
+     sc = true;
    }
-   if(selection.get(0).symbol.equals(selection.get(1).symbol) && selection.get(0).symbol.equals(selection.get(1).symbol)) {
-     println("Same Symbol!");
+   if(selection.get(0).symbol.equals(selection.get(1).symbol) && selection.get(0).symbol.equals(selection.get(2).symbol)) {
+     //println("Same Symbol!");
+     ss = true;
    }
    
+   if (sn && sc && !ss){
+     println("Good Set!");
+   }
+   
+   else if (sn && !sc && ss){
+        println("Good Set!");
+   }
+   
+   else if (!sn && sc && ss){
+     println("Good Set!");
+   }
+   
+   else if (!sn && !sc && ss){
+     println("Good Set!");
+   }
+   
+   else if (sn && !sc && !ss){
+     println("Good Set!");
+   }
+   
+   else if (!sn && sc && !ss){
+     println("Good Set!");
+   }
+    
    for(Card c: selection){
      c.selected = !c.selected;
    }
+   
    selection.clear();
 
  }
